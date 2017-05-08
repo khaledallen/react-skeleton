@@ -19491,15 +19491,16 @@ process.umask = function() { return 0; };
 
 },{}],168:[function(require,module,exports){
 var React = require('react');
-var ListItem = require('./ListItem.jsx');
+var ListItem = require('./ListItem.jsx'); // import the ListItem class that we created
 
-var ingredients = [{ "id": 1, "text": "ham" }, { "id": 2, "text": "cheese" }, { "id": 3, "text": "potatoes" }];
+var ingredients = [{ "id": 1, "text": "ham" }, { "id": 2, "text": "cheese" }, { "id": 3, "text": "potatoes" }]; //this would normally be contained on a server
 
 var List = React.createClass({
   displayName: 'List',
 
   render: function () {
     var listItems = ingredients.map(function (item) {
+      //.map is a JavaScript function that creates a new array by doing the callback function on each elemnt from the array that is passed in
       return React.createElement(ListItem, { key: item.id, ingredient: item.text });
     });
 
@@ -19514,11 +19515,12 @@ var List = React.createClass({
 module.exports = List;
 
 },{"./ListItem.jsx":169,"react":166}],169:[function(require,module,exports){
-var React = require('react');
+var React = require('react'); //node syntax to import the React module
 var ListItem = React.createClass({
   displayName: 'ListItem',
-
+  //this is how your create your own React (object) class
   render: function () {
+    // Property named render is a function that returns
     return React.createElement(
       'li',
       null,
@@ -19527,7 +19529,7 @@ var ListItem = React.createClass({
         null,
         this.props.ingredient
       )
-    );
+    ); //this assumes that there is a property called ingredient that is passed down into this component
   }
 });
 
@@ -19535,9 +19537,9 @@ module.exports = ListItem;
 
 },{"react":166}],170:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require('react-dom');
+var ReactDOM = require('react-dom'); //react-dom works to show things on the screen
 var List = require('./components/List.jsx');
 
-ReactDOM.render(React.createElement(List, null), document.getElementById('ingredients'));
+ReactDOM.render(React.createElement(List, null), document.getElementById('ingredients')); //this tells the DOM to insert the List component into the DOM element ID called ingredients
 
 },{"./components/List.jsx":168,"react":166,"react-dom":1}]},{},[170]);
